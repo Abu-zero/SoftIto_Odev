@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
@@ -21,6 +22,6 @@ public class UIController : MonoBehaviour
     }
 
     public void InventoryClick(){
-        
+        DOTween.To(()=>Scene1Canvas.alpha,x=>Scene1Canvas.alpha=x,0,1);
     }
 }
