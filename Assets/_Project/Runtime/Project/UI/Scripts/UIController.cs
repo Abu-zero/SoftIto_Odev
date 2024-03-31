@@ -41,6 +41,6 @@ public class UIController : MonoBehaviour
     }
     public void ItemPotionClick(){
         PotionItemSelected.active=true;
-        PotionItemSelectedRect.DOScale(1.1f, 1f).SetLoops(5,LoopType.Yoyo);
+        PotionItemSelectedRect.DOScale(1.1f, 0.5f).SetLoops(-1,LoopType.Yoyo);
     }
 }
