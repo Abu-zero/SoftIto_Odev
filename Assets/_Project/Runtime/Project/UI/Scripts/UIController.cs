@@ -4,11 +4,14 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using System;
 
 public class UIController : MonoBehaviour
 {
     
-    public GameObject Scene1,Scene2,PotionItemSelected;
+    public GameObject Scene1,Scene2,PotionItemSelected,ItemFrame,PotionFrame,FrameImage,ItemFrame2,Slot1,Slot2,Slot3,ItemFrame2In1,
+    ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3;
     public CanvasGroup Scene1Canvas,Scene2Canvas;
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
     Scene2Footer,PotionItemSelectedRect;
@@ -17,6 +20,10 @@ public class UIController : MonoBehaviour
         Scene1Canvas.alpha=1;
         Scene2Canvas.alpha=0;
         PotionItemSelected.active=false;
+        PotionFrame.active=false;
+        Ember1.active=false;
+        Ember2.active=false;
+        Ember3.active=false;
     }
     void Start()
     {
@@ -42,5 +49,19 @@ public class UIController : MonoBehaviour
     public void ItemPotionClick(){
         PotionItemSelected.active=true;
         PotionItemSelectedRect.DOScale(1.1f, 0.5f).SetLoops(-1,LoopType.Yoyo);
+        ItemFrame.GetComponent<Image>().color = new Color32(243,229,162,255);
+        ItemFrame2.GetComponent<Image>().color = new Color32(243,229,162,255);
+        Slot1.GetComponent<Image>().color = new Color32(243,229,162,255);
+        Slot2.GetComponent<Image>().color = new Color32(243,229,162,255);
+        Slot3.GetComponent<Image>().color = new Color32(243,229,162,255);
+        ItemFrame2In1.GetComponent<Image>().color = new Color32(243,229,162,255);
+        ItemFrame2In2.GetComponent<Image>().color = new Color32(243,229,162,255);
+        ItemFrame2In3.GetComponent<Image>().color = new Color32(243,229,162,255);
+        ItemFrame2In4.GetComponent<Image>().color = new Color32(243,229,162,255);
+        FrameImage.active=false;
+        PotionFrame.active=true;
+        Ember1.active=true;
+        Ember2.active=true;
+        Ember3.active=true;
     }
 }
