@@ -9840,6 +9840,7 @@ MonoBehaviour:
   Ember1Rect: {fileID: 639616188}
   Ember2Rect: {fileID: 1087118342}
   Ember3Rect: {fileID: 220521368}
+  ItemFrameText: {fileID: 588049648}
 --- !u!4 &1388652875
 Transform:
   m_ObjectHideFlags: 0

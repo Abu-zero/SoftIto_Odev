@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class UIController : MonoBehaviour
     public CanvasGroup Scene1Canvas,Scene2Canvas;
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
     Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
+
+    public TextMeshProUGUI ItemFrameText;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -67,10 +70,12 @@ public class UIController : MonoBehaviour
         Ember1.active=true;
         Ember2.active=true;
         Ember3.active=true;
-        //PotionFrame
         PotionItemRect.DOAnchorPosY(0, 0.5f);
         Ember1Rect.DOAnchorPosY(0, 0.5f);
         Ember2Rect.DOAnchorPosY(0, 0.5f);
         Ember3Rect.DOAnchorPosY(0, 0.5f);
+
+        ItemFrameText.text="";
+        DOTween.To(() => ItemFrameText.text, (yazi) => ItemFrameText.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
     }
 }
