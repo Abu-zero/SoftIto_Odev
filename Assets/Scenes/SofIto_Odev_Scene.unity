@@ -9362,6 +9362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene1Canvas: {fileID: 1886391014}
+  Scene1Header: {fileID: 1122067448}
+  Scene1Footer: {fileID: 274955750}
+  Scene1BodyRight: {fileID: 567886577}
+  Scene1BodyLeft: {fileID: 1055960405}
 --- !u!4 &1388652875
 Transform:
   m_ObjectHideFlags: 0
