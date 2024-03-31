@@ -9836,6 +9836,10 @@ MonoBehaviour:
   Scene2Body: {fileID: 37228393}
   Scene2Footer: {fileID: 242549816}
   PotionItemSelectedRect: {fileID: 476692927}
+  PotionItemRect: {fileID: 459936775}
+  Ember1Rect: {fileID: 639616188}
+  Ember2Rect: {fileID: 1087118342}
+  Ember3Rect: {fileID: 220521368}
 --- !u!4 &1388652875
 Transform:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3;
     public CanvasGroup Scene1Canvas,Scene2Canvas;
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
-    Scene2Footer,PotionItemSelectedRect;
+    Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -30,6 +30,10 @@ public class UIController : MonoBehaviour
         Scene2Header.DOAnchorPosY(Scene2Header.anchoredPosition.y+10, 0.1f);
         Scene2Body.DOAnchorPosY(Scene2Body.anchoredPosition.y+10, 0.1f);
         Scene2Footer.DOAnchorPosY(Scene2Header.anchoredPosition.y-10, 0.1f);
+        PotionItemRect.DOAnchorPosY(Scene2Header.anchoredPosition.y+10, 0.1f);
+        Ember1Rect.DOAnchorPosY(Scene2Header.anchoredPosition.y+10, 0.1f);
+        Ember2Rect.DOAnchorPosY(Scene2Header.anchoredPosition.y+10, 0.1f);
+        Ember3Rect.DOAnchorPosY(Scene2Header.anchoredPosition.y+10, 0.1f);
     }
     void Update()
     {
@@ -63,5 +67,10 @@ public class UIController : MonoBehaviour
         Ember1.active=true;
         Ember2.active=true;
         Ember3.active=true;
+        //PotionFrame
+        PotionItemRect.DOAnchorPosY(0, 0.5f);
+        Ember1Rect.DOAnchorPosY(0, 0.5f);
+        Ember2Rect.DOAnchorPosY(0, 0.5f);
+        Ember3Rect.DOAnchorPosY(0, 0.5f);
     }
 }
