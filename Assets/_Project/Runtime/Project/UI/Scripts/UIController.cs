@@ -12,12 +12,12 @@ public class UIController : MonoBehaviour
 {
     
     public GameObject Scene1,Scene2,PotionItemSelected,ItemFrame,PotionFrame,FrameImage,ItemFrame2,Slot1,Slot2,Slot3,ItemFrame2In1,
-    ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3;
+    ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3,CraftButton;
     public CanvasGroup Scene1Canvas,Scene2Canvas;
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
     Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
-
-    public TextMeshProUGUI ItemFrameText,ItemFrameText2;
+    public TextMeshProUGUI ItemFrameText,ItemFrameText2,ItemFrameText3;
+    public Sprite ButtonSprite;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -27,6 +27,8 @@ public class UIController : MonoBehaviour
         Ember1.active=false;
         Ember2.active=false;
         Ember3.active=false;
+        ItemFrameText3.enabled=false;
+        ItemFrameText2.enabled=false;
     }
     void Start()
     {
@@ -76,7 +78,9 @@ public class UIController : MonoBehaviour
         Ember3Rect.DOAnchorPosY(0, 0.5f);
         ItemFrameText.enabled=false;
         ItemFrameText2.enabled=true;
+        ItemFrameText3.enabled=true;
         ItemFrameText2.text="";
+        CraftButton.GetComponent<Image>().sprite=ButtonSprite;
         DOTween.To(() => ItemFrameText2.text, (yazi) => ItemFrameText2.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
     }
 }
