@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
     Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
 
-    public TextMeshProUGUI ItemFrameText;
+    public TextMeshProUGUI ItemFrameText,ItemFrameText2;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -74,8 +74,9 @@ public class UIController : MonoBehaviour
         Ember1Rect.DOAnchorPosY(0, 0.5f);
         Ember2Rect.DOAnchorPosY(0, 0.5f);
         Ember3Rect.DOAnchorPosY(0, 0.5f);
-
-        ItemFrameText.text="";
-        DOTween.To(() => ItemFrameText.text, (yazi) => ItemFrameText.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
+        ItemFrameText.enabled=false;
+        ItemFrameText2.enabled=true;
+        ItemFrameText2.text="";
+        DOTween.To(() => ItemFrameText2.text, (yazi) => ItemFrameText2.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
     }
 }
