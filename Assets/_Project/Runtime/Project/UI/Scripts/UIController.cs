@@ -12,12 +12,13 @@ public class UIController : MonoBehaviour
 {
     
     public GameObject Scene1,Scene2,PotionItemSelected,ItemFrame,PotionFrame,FrameImage,ItemFrame2,Slot1,Slot2,Slot3,ItemFrame2In1,
-    ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3,CraftButton;
+    ItemFrame2In2,ItemFrame2In3,ItemFrame2In4,Ember1,Ember2,Ember3,CraftButton,CraftImage;
     public CanvasGroup Scene1Canvas,Scene2Canvas;
     public RectTransform Scene1Header,Scene1Footer,Scene1BodyRight,Scene1BodyLeft,Scene2Header,Scene2Body,
     Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
-    public TextMeshProUGUI ItemFrameText,ItemFrameText2,ItemFrameText3;
-    public Sprite ButtonSprite;
+    public TextMeshProUGUI ItemFrameText,ItemFrameText2,ItemFrameText3,CraftText,CraftText2;
+    public Sprite ButtonSprite,CraftSprite;
+    public bool CounterButton,CounterPotion;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -56,6 +57,7 @@ public class UIController : MonoBehaviour
         DOTween.To(()=>Scene2Canvas.alpha,x=>Scene2Canvas.alpha=x,1,1);
     }
     public void ItemPotionClick(){
+        if(CounterPotion==false){
         PotionItemSelected.active=true;
         PotionItemSelectedRect.DOScale(1.1f, 0.5f).SetLoops(-1,LoopType.Yoyo);
         ItemFrame.GetComponent<Image>().color = new Color32(243,229,162,255);
@@ -82,5 +84,45 @@ public class UIController : MonoBehaviour
         ItemFrameText2.text="";
         CraftButton.GetComponent<Image>().sprite=ButtonSprite;
         DOTween.To(() => ItemFrameText2.text, (yazi) => ItemFrameText2.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
+        CounterPotion=true;
+        }
+    }
+    public void CraftButtonClick(){
+        if(CounterButton==false){
+        CraftImage.GetComponent<Image>().DOFillAmount(1, 3).OnComplete(()=>{
+            CraftImage.GetComponent<Image>().enabled=false;
+            CraftText2.text="";
+            DOTween.To(() => CraftText.text, (yazi) => CraftText.text = yazi, "Craft", 0.5f).SetOptions(true, ScrambleMode.None);
+            Ember1.GetComponent<Image>().color = new Color32(255,255,255,127);
+            Ember2.GetComponent<Image>().color = new Color32(255,255,255,127);
+            Ember3.GetComponent<Image>().color = new Color32(255,255,255,127);
+            Slot1.GetComponent<Image>().color = new Color32(175,175,175,255);
+            Slot2.GetComponent<Image>().color = new Color32(175,175,175,255);
+            Slot3.GetComponent<Image>().color = new Color32(175,175,175,255);
+        });
+        CraftButton.GetComponent<Image>().sprite=CraftSprite;
+        CraftText.text="";
+        DOTween.To(() => CraftText2.text, (yazi) => CraftText2.text = yazi, "In crafting", 0.5f).SetOptions(true, ScrambleMode.None);
+        CounterButton=true;
+        }
+    }
+    public void CloseButton(){
+        Scene2Header.DOAnchorPosY(10, 0.5f);
+        Scene2Body.DOAnchorPosY(10, 0.5f);
+        Scene2Footer.DOAnchorPosY(-10, 0.5f);
+        DOTween.To(()=>Scene2Canvas.alpha,x=>Scene2Canvas.alpha=x,0,1).OnComplete(()=>{
+            Scene2.active=false;
+            
+        });
+        Scene1.active=true;
+        Scene1Header.DOAnchorPosY(0, 0.5f);
+        Scene1Footer.DOAnchorPosY(0, 0.5f);
+        Scene1BodyRight.DOAnchorPosX(0, 0.5f);
+        Scene1BodyLeft.DOAnchorPosX(0, 0.5f);
+        DOTween.To(()=>Scene1Canvas.alpha,x=>Scene1Canvas.alpha=x,1,1);
+        /*Scene1Header.DOAnchorPosY(-10, 0.5f);
+        Scene1Footer.DOAnchorPosY(10, 0.5f);
+        Scene1BodyRight.DOAnchorPosX(-10, 0.5f);
+        Scene1BodyLeft.DOAnchorPosX(10, 0.5f);*/
     }
 }
