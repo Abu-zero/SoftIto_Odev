@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     Scene2Footer,PotionItemSelectedRect,PotionItemRect,Ember1Rect,Ember2Rect,Ember3Rect;
     public TextMeshProUGUI ItemFrameText,ItemFrameText2,ItemFrameText3,CraftText,CraftText2,EnoughText;
     public Sprite ButtonSprite,CraftSprite;
-    public bool CounterButton,CounterPotion,CounterClose;
+    public bool CounterButton,CounterPotion,CounterClose,CounterQuest,CounterInventory;
 
     void Awake(){
         Scene1Canvas.alpha=1;
@@ -47,6 +47,7 @@ public class UIController : MonoBehaviour
         
     }
     public void InventoryClick(){
+        if(CounterInventory==false){
         Scene1Header.DOAnchorPosY(10, 0.5f);
         Scene1Footer.DOAnchorPosY(-10, 0.5f);
         Scene1BodyRight.DOAnchorPosX(10, 0.5f);
@@ -56,6 +57,7 @@ public class UIController : MonoBehaviour
         Scene2Body.DOAnchorPosY(0, 0.5f);
         Scene2Footer.DOAnchorPosY(0, 0.5f);
         DOTween.To(()=>Scene2Canvas.alpha,x=>Scene2Canvas.alpha=x,1,1);
+        }
     }
     public void ItemPotionClick(){
         if(CounterPotion==false){
@@ -86,10 +88,11 @@ public class UIController : MonoBehaviour
         CraftButton.GetComponent<Image>().sprite=ButtonSprite;
         DOTween.To(() => ItemFrameText2.text, (yazi) => ItemFrameText2.text = yazi, "Lorem ipsum dolor sit amet consectetur. Platea elit morbi nullam quisque orci turpis massa amet.", 1f).SetOptions(true, ScrambleMode.None);
         CounterPotion=true;
+        CounterButton=true;
         }
     }
     public void CraftButtonClick(){
-        if(CounterButton==false){
+        if(CounterButton==true){
         CraftImage.GetComponent<Image>().DOFillAmount(1, 3).OnComplete(()=>{
             CraftImage.GetComponent<Image>().enabled=false;
             CraftText2.text="";
@@ -107,7 +110,7 @@ public class UIController : MonoBehaviour
         CraftButton.GetComponent<Image>().sprite=CraftSprite;
         CraftText.text="";
         DOTween.To(() => CraftText2.text, (yazi) => CraftText2.text = yazi, "In crafting", 0.5f).SetOptions(true, ScrambleMode.None);
-        CounterButton=true;
+        CounterButton=false;
         }
     }
     public void CloseButton(){
@@ -126,10 +129,15 @@ public class UIController : MonoBehaviour
         Scene1BodyLeft.DOAnchorPosX(0, 0.5f);
         DOTween.To(()=>Scene1Canvas.alpha,x=>Scene1Canvas.alpha=x,1,1);
         MainPotion.active=true;
+        CounterClose=false;
+        CounterQuest=true;
+        CounterInventory=true;
         }
     }
     public void PotionClick(){
+        if(CounterQuest==true){
         DOTween.To(()=>Scene1Canvas.alpha,x=>Scene1Canvas.alpha=x,0,1).OnComplete(()=>{Scene1.active=false;});
         DOTween.To(()=>Scene3Canvas.alpha,x=>Scene3Canvas.alpha=x,1,1);
+        }
     }
 }
